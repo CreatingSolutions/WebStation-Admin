@@ -1,0 +1,31 @@
+sudo: false
+dist: trusty
+language: node_js
+
+cache:
+  directories:
+    - node_modules
+
+addons:
+  chrome: stable
+  sonarcloud:
+    organization: "creatingsolutions-github" # the key of the org you chose at step #3
+    token:
+      secure: "loYulRp5TmK2ZaQDX4XUnwV6DIBE6/4z4o3x3NyQEvxS7hyr3Br5ZWaIh33WMt5nRZkNjFaC5mnR2ZwHRP7HfawjMIFyeBQM1hxQT336ouhIqiKDZYsSj7RKeBRPKawa/JxmSzMCyJNs8axTyZ+NsLXmhkIPB9No60BnQms4gqae5a+VrkItDZj9zJIZty/YKj93agV3TG74tPbQrxgefRBKvAS6bjR0K/+5mTV46i3Ib8AmfzVsFjHbeUbQV5J+tNACfYh/bKZQ3cpdQbFdev8Qh1iQqKRc2XOa172X9L4jXbeO5zJnO1mGchrSLu9Am8Rx12pVD9p2L3lyddfUbH6zQc2AdwCvAnH0+ITteQ4wBAlkt+5kIFnjkM8gMrAKrM6do1QdetOiQricQwWCqEYB2uiS7Ns7cxaMx6MIiu32tx6B/GIWhWSiC9pb/fCjm+2MLD5UL31ITY+1m9OC/nw4XUXxZCUFnGNXrvn/6wLMC0ahCeGVur+kXhJUHJdA7mPf6AErmoP+lP1VLnGXMxXwPOf5Ol6pCEzHSr9Xf+EBxfq4XaNI6r3rcwDGzYUPFAmV5o0KhKnxkfH2YkFdNZZDBq1TBbREHBAirqJRr2JEx37mZWJMznbMacj4wUPWgLOsc9OpOndHRUNdIoMVKh+Tx6+v2/Is2/k0/C237H8="
+
+node_js:
+  - "8"
+  
+before_install:
+  - npm install npm@latest -g
+  - npm cache verify
+  - npm prune
+  - npm update
+
+install:
+  - npm install
+
+script:
+  - sonar-scanner 
+  
+  #-Dsonar.projectKey=webstation-front -Dsonar.organization=creatingsolutions-github -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=78a949ae890efcc103dfacbdd9440e0c0f5f1d25
