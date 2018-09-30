@@ -2,10 +2,6 @@ sudo: false
 dist: trusty
 language: node_js
 
-cache:
-  directories:
-    - node_modules
-
 addons:
   chrome: stable
   sonarcloud:
@@ -23,7 +19,6 @@ before_install:
   - npm update
 
 install:
-  - npm install -g angular-cli
   - npm install
 
 script:
